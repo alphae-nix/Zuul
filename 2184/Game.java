@@ -8,14 +8,15 @@ public class Game
     private void createRooms(){
         Room vHome= new Room ("You are home") ;
         Room vStreet1 = new Room ("You are in the First street") ;
-        Room vFactory = new Room ("You are in the Factory") ;
+        Room vFactory = new Room ("You are in the party of truth") ;
         Room vStreet2 = new Room ("You are in the Second Street") ;
         Room vStreet3 = new Room ("You are in are in the Third Street") ;
         Room vPark = new Room ("You are in Hyde Park") ;
         Room vBridge = new Room ("You are in Tower Bridge");
-        Room vPrison = new Room ("You are in the Prison");
+        Room vCafe = new Room ("You are in the Café du Chataigner");
         Room vStreet4 = new Room ("You are in the Fourth Street") ;
         Room vCinema = new Room ("You are in the Cinema");
+        Room vCave = new Room (" You are in a secret place") ;
         // Déclaration des lieux de ma map (10)
     
         vHome.setExits(vStreet1, vStreet3, null, null ) ;
@@ -24,10 +25,11 @@ public class Game
         vStreet2.setExits ( null , vPark , null , vFactory ) ;
         vStreet3.setExits ( vPark , null , null , vHome) ;
         vPark.setExits ( vBridge , vStreet4 , vStreet3 , vStreet2 ) ;
-        vBridge.setExits ( vPrison , null , vPark , null ) ;
-        vPrison.setExits ( null , null , vBridge , null ) ;
+        vBridge.setExits ( vCafe , null , vPark , null ) ;
+        vCafe.setExits ( null , null , vBridge , null ) ;
         vStreet4.setExits ( null , null , vCinema , vPark ) ;
         vCinema.setExits ( vStreet4 , null , null , null ) ;
+        vCave.setExits ( null , null , null , null ) ;
         // Déclaration du réseau des salles entrent elles
     
         this.aCurrentRoom = vHome ;
@@ -37,8 +39,8 @@ public class Game
     
     private void printWelcome() {
         System.out.println("Welcome to the World of Zuul! ") ;
-        System.out.println("Vous devez retrouver une combinaison de chiffre correspondant aux coordonnée géographique d'une base rebelle luttant contre le partis");
-        System.out.println("Vous devrez pour cela suivre les indications fournis dans votre livre ");
+        System.out.println("You must find a combination of numbers corresponding to the geographical coordinates of a rebel base that is fighting against the \"party\"");
+        System.out.println("You will need to follow the instructions in your book to avoid being arrested.");
         
         System.out.println("Type 'help' if you need help.");
         System.out.println('\n');
@@ -101,26 +103,6 @@ public class Game
             this.aCurrentRoom=vNextRoom ;
             /*System.out.println(vNextRoom.getDescription()) ;*/
             printLocationInfo();
-            /*if ( this.aCurrentRoom.aNorthExit!=null)
-            {
-                System.out.println("Exit North") ;
-            }
-            
-            if ( this.aCurrentRoom.aEastExit!=null)
-            {
-                System.out.println("Exit East") ;
-            }
-        
-            if ( this.aCurrentRoom.aSouthExit!=null)
-            {   
-                System.out.println("Exit South") ; 
-            }
-        
-            if ( this.aCurrentRoom.aWestExit!=null)
-            {
-                System.out.println("Exit West") ;
-            }*/
-            
         }
     } //Procédure goHome exécuté quand on tape la commande "go" et qui permet de changer de pièce
         
