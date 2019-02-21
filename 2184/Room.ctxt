@@ -2,8 +2,14 @@
 comment0.target=Room
 comment1.params=pDescription
 comment1.target=Room(java.lang.String)
+comment1.text=\n\ Va\ initialiser\ les\ attributs\ de\ la\ classe\n
 comment2.params=
 comment2.target=java.lang.String\ getDescription()
+comment2.text=\n\ Va\ cr\u00E9er\ un\ accesseur\ de\ aDescription\n
 comment3.params=pNorthExit\ pEastExit\ pSouthExit\ pWestExit
-comment3.target=void\ setExits(v1.Room,\ v1.Room,\ v1.Room,\ v1.Room)
-numComments=4
+comment3.target=void\ setExits(Room,\ Room,\ Room,\ Room)
+comment3.text=\n\ Va\ initialiser\ les\ diff\u00E9rentes\ sorties\ possibles\ pour\ une\ pi\u00E8ce\n\ @param\ pNorthExit\ initialise\ une\ sortie\ au\ Nord\ de\ la\ pi\u00E8ce\n\ @param\ pEastExit\ initialise\ une\ sortie\ \u00E0\ l'Est\ de\ la\ pi\u00E8ce\n\ @param\ pSouthExit\ initialise\ une\ sortie\ au\ Sud\ de\ la\ pi\u00E8ce\n\ @parma\ pWestExit\ initialise\ une\ sortie\ \u00E0\ l'Ouest\ de\ la\ pi\u00E8ce\n
+comment4.params=pDirection
+comment4.target=Room\ getExit(java.lang.String)
+comment4.text=\n\ Permet\ de\ comparer\ pDirection\ avec\ les\ diff\u00E9rentes\ directions\ initialis\u00E9s\n\ @param\ pDirection\ Chaine\ de\ characht\u00E8re\ tap\u00E9\ par\ l'utilisateur\ qui\ va\ lui\ affecter\ une\ direction\n\ @return\ les\ diff\u00E9rentes\ direction\n
+numComments=5

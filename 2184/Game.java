@@ -1,10 +1,11 @@
- 
 
 public class Game
 {
     private Room aCurrentRoom;
     private Parser aParser;
-    
+    /**
+     * Va créer toutes les rooms nécessaires
+     */
     private void createRooms(){
         Room vHome= new Room ("You are home") ;
         Room vStreet1 = new Room ("You are in the First street") ;
@@ -18,7 +19,7 @@ public class Game
         Room vCinema = new Room ("You are in the Cinema");
         Room vCave = new Room (" You are in a secret place") ;
         // Déclaration des lieux de ma map (10)
-    
+
         vHome.setExits(vStreet1, vStreet3, null, null ) ;
         vStreet1.setExits ( vFactory, null , vHome , null ) ;
         vFactory.setExits ( null , vStreet2 , vStreet1 , null ) ;
@@ -31,22 +32,28 @@ public class Game
         vCinema.setExits ( vStreet4 , null , null , null ) ;
         vCave.setExits ( null , null , null , null ) ;
         // Déclaration du réseau des salles entrent elles
-    
+
         this.aCurrentRoom = vHome ;
         // Déclaration du lieu courant
-        
+
     }
-    
+
+    /**
+     * Va afficher un message de bienvenu au début du jeu
+     */
     private void printWelcome() {
         System.out.println("Welcome to the World of Zuul! ") ;
         System.out.println("You must find a combination of numbers corresponding to the geographical coordinates of a rebel base that is fighting against the \"party\"");
         System.out.println("You will need to follow the instructions in your book to avoid being arrested.");
-        
+
         System.out.println("Type 'help' if you need help.");
         System.out.println('\n');
         printLocationInfo();
     } //Affichage du message au début du jeu 
-  
+    
+    /**
+     * Va nous permettre de lancer le jeu 
+     */
     public void play() {
         printWelcome() ;
         boolean vFinished = false ;
@@ -55,113 +62,111 @@ public class Game
             vFinished = this.processCommand( vCommand ) ;
         }
         System.out.println( "Thank you for playing. Good bye." );
-        
+
     } //play() 
     
+    /**
+     * Va permettre d'initialiser les attributs de la classe
+     */
     public Game () {
         this.createRooms() ;
         aParser = new Parser();
     } // Constructeur par Défaut
-    
-    private void goRoom (final Command pDirection )
+
+    /**
+     * Procédure goHome exécuté quand on tape la commande "go" et qui permet de changer de pièce
+     * @param pCommand la commande passé en paramètre pour connaitre la direction
+     */
+    private void goRoom (final Command pCommand)
     { 
-        if ( ! pDirection.hasSecondWord() ){
+        if ( ! pCommand.hasSecondWord() ){
             System.out.println("Go where");
             return ;
         }//Vérification de l'insertion d'un deuxième caractère et affichage message d'erreur
-    
-        Room vNextRoom = null ; // initialisation de NextRoom à null
-    
-        String vDirection = pDirection.getSecondWord() ; // récupération du second mot dans une variable
-    
-        if (vDirection.equals("north")){
-            vNextRoom = this.aCurrentRoom.aNorthExit ;
-        }
-    
-        if (vDirection.equals("east")){
-            vNextRoom = this.aCurrentRoom.aEastExit ;
-        }
-    
-        if (vDirection.equals("south")){
-            vNextRoom = this.aCurrentRoom.aSouthExit;
-        }
-    
-        if (vDirection.equals("west")){
-            vNextRoom=this.aCurrentRoom.aWestExit ; 
-        }
-    
-        else{
-            System.out.println("Unknown direction !") ;
-    
-        }
-    
+
+        String vDirection = pCommand.getSecondWord() ;
+
+        Room vNextRoom = aCurrentRoom.getExit(vDirection) ; // initialisation de NextRoom à null
+
         if (vNextRoom==null){
             System.out.println("There is no door !") ;
         }
-    
+
         else{
             this.aCurrentRoom=vNextRoom ;
             /*System.out.println(vNextRoom.getDescription()) ;*/
             printLocationInfo();
         }
-    } //Procédure goHome exécuté quand on tape la commande "go" et qui permet de changer de pièce
-        
-  
+    } //fin goRoom
     
+    /**
+     * Va afficher un message lorsqu'on tapera "help"
+    */
     private void printHelp(){
-        System.out.println("You are lost. You are alone.\n" + " You wander around at the university.\n\n" +
-        " Your command words are:\n" + "   go quit help ") ;
-    } // Méthode println qui sera afficher quand on tapera "help"
-        
+        System.out.println("You are lost. You are alone.\n" +
+            " Your command words are:\n" + "   go quit help ") ;
+    } // fin méthode printHelp
+    
+    /**
+     * Va initialiser la fonction Boolean qui se lance quand on marquera "quit"
+     * @pCommand est la commande tapé au clavier
+     */
     private boolean quit(final Command pCommand){
         if ( pCommand.hasSecondWord()){
             System.out.println("Quit what ?") ;
             return false ;
         }
         else return true ; 
-    
-    } // Fonction Boolean qui se lance quand on marquera "quit"
 
+    } // fin méthode quit
+
+    /**
+     * Va listé des commandes qui seront validées lorsqu'on les écrits dans le jeu
+     * @param pCommand commande tapé
+     */
     private boolean processCommand( final Command pCommand){
         String vCommandWord = pCommand.getCommandWord() ;
         if (pCommand.isUnknown()==true){
             System.out.println("I don't know what you mean...") ;
             return false ;
         }
-       
+
         if (vCommandWord.equals("quit")){
             return quit(pCommand) ;
         }
-            
+
         if (vCommandWord.equals("go")){
             goRoom(pCommand) ;
             return false ;
         }
-            
+
         if (vCommandWord.equals("help")){
             printHelp() ;
             return false ;
         }
-    
+
         return false ;
     }
-    
+
+    /**
+     * Va permettre d'afficher les informations relatives au lieu où on se trouve
+     */
     private void printLocationInfo(){
         System.out.println("You are " + aCurrentRoom.getDescription());
         System.out.print("The out :");
-        if(aCurrentRoom.aNorthExit != null){
-        System.out.print("north ") ;
+        if(aCurrentRoom.getExit("north") != null){
+            System.out.print("north ") ;
         }
-        if(aCurrentRoom.aEastExit != null){
-        System.out.print("east ") ;
+        if(aCurrentRoom.getExit("east") != null){
+            System.out.print("east ") ;
         }
-        if(aCurrentRoom.aSouthExit != null){
-        System.out.print("south ") ;
+        if(aCurrentRoom.getExit("south") != null){
+            System.out.print("south ") ;
         }
-        if(aCurrentRoom.aWestExit != null){
-        System.out.print("west ") ;
+        if(aCurrentRoom.getExit("west") != null){
+            System.out.print("west ") ;
         }
         System.out.println();
     }
-    
+
 } // Game
