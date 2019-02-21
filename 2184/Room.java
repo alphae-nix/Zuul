@@ -10,6 +10,7 @@ public class Room
     // Attributs   
  /**
   * Va initialiser les attributs de la classe
+  * @param pDescription la nouvelle description de la room
   */
  public Room (final String pDescription){
     this.aDescription = pDescription ;
@@ -18,6 +19,7 @@ public class Room
  
  /**
   * Va créer un accesseur de aDescription
+  * @return renvoi la description de l'objet
   */
  public String getDescription() {
     return this.aDescription;
@@ -28,7 +30,7 @@ public class Room
   * @param pNorthExit initialise une sortie au Nord de la pièce
   * @param pEastExit initialise une sortie à l'Est de la pièce
   * @param pSouthExit initialise une sortie au Sud de la pièce
-  * @parma pWestExit initialise une sortie à l'Ouest de la pièce
+  * @param pWestExit initialise une sortie à l'Ouest de la pièce
   */
  public void setExits (final Room pNorthExit , final Room pEastExit , final Room pSouthExit , final Room pWestExit) {
     this.aNorthExit = pNorthExit ;

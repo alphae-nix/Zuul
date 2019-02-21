@@ -109,20 +109,22 @@ public class Game
     
     /**
      * Va initialiser la fonction Boolean qui se lance quand on marquera "quit"
-     * @pCommand est la commande tapé au clavier
+     * @param pCommand est la commande tapé au clavier
+     * @return la valeur de quit
      */
     private boolean quit(final Command pCommand){
         if ( pCommand.hasSecondWord()){
             System.out.println("Quit what ?") ;
             return false ;
         }
-        else return true ; 
+        return true ; 
 
     } // fin méthode quit
 
     /**
      * Va listé des commandes qui seront validées lorsqu'on les écrits dans le jeu
      * @param pCommand commande tapé
+     * @return la valeure de processCommand
      */
     private boolean processCommand( final Command pCommand){
         String vCommandWord = pCommand.getCommandWord() ;

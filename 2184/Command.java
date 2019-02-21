@@ -17,6 +17,7 @@ public class Command
 
     /**
      * Va créer un accesseur à l'attribut aCommandWord()
+     * @return aCommandWord
      */
     public String getCommandWord()
     {
@@ -25,6 +26,7 @@ public class Command
 
     /**
      * Va créer un accesseur à l'attribut aSecondWord()
+     * @return aSecondWord
      */
     public String getSecondWord(){
         return this.aSecondWord ;
@@ -46,14 +48,10 @@ public class Command
 
     /**
      * Va vérifier qu'une méthode à bien été tapé
+     * @return si la commande est connue ou pas
      */
     public boolean isUnknown() {
-        boolean isUnknown = true ;
-        if ( this.aCommandWord == null ){
-            isUnknown = true ;
-        }
-        else isUnknown = false ;
-        return isUnknown ;
+        return (this.aCommandWord == null ) ;
     } // fin isUknown()
 
 } // Command
