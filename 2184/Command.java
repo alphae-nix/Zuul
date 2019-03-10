@@ -1,4 +1,6 @@
-
+/**
+ * Cette classe va représenter les commandes tapées par le joueur dans la console
+ */
 public class Command
 {
     private String aCommandWord = null ;

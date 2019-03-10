@@ -1,18 +1,19 @@
 #BlueJ class context
 comment0.target=Room
+comment0.text=\n\ Cette\ classe\ repr\u00E9sente\ une\ salle,\ elle\ r\u00E9f\u00E9rence\ des\ liens\ vers\ des\ salles\ voisines\n
 comment1.params=pDescription
 comment1.target=Room(java.lang.String)
 comment1.text=\n\ Va\ initialiser\ les\ attributs\ de\ la\ classe\n\ @param\ pDescription\ la\ nouvelle\ description\ de\ la\ room\n
 comment2.params=
 comment2.target=java.lang.String\ getDescription()
-comment2.text=\n\ Va\ cr\u00E9er\ un\ accesseur\ de\ aDescription\n\ @return\ renvoi\ la\ description\ de\ l'objet\n
-comment3.params=pNorthExit\ pEastExit\ pSouthExit\ pWestExit
-comment3.target=void\ setExits(Room,\ Room,\ Room,\ Room)
-comment3.text=\n\ Va\ initialiser\ les\ diff\u00E9rentes\ sorties\ possibles\ pour\ une\ pi\u00E8ce\n\ @param\ pNorthExit\ initialise\ une\ sortie\ au\ Nord\ de\ la\ pi\u00E8ce\n\ @param\ pEastExit\ initialise\ une\ sortie\ \u00E0\ l'Est\ de\ la\ pi\u00E8ce\n\ @param\ pSouthExit\ initialise\ une\ sortie\ au\ Sud\ de\ la\ pi\u00E8ce\n\ @param\ pWestExit\ initialise\ une\ sortie\ \u00E0\ l'Ouest\ de\ la\ pi\u00E8ce\n
+comment2.text=\n\ Va\ cr\u00E9er\ un\ accesseur\ de\ aDescription\n\ @return\ renvoi\ la\ description\ de\ l'objet\ \n
+comment3.params=pDirection\ pNeighbor
+comment3.target=void\ setExits(java.lang.String,\ Room)
+comment3.text=\n\ D\u00E9finit\ les\ sorties\ de\ cette\ pi\u00E8ce.\ Chaque\ direction\ soit\ conduit\ \u00E0\ une\ autre\ pi\u00E8ce,\ soit\ est\ null\ (il\ n'y\ a\ pas\ de\ sortie\ dans\ cette\ direction)\n\ @param\ pDirection\ direction\ de\ la\ salle\ voisine\ \u00E0\ ajouter\ \n\ @param\ pNeighbor\ salle\ voisine\ \u00E0\ ajouter\n
 comment4.params=pDirection
 comment4.target=Room\ getExit(java.lang.String)
 comment4.text=\n\ Cette\ m\u00E9thode\ retourne\ la\ salle\ dans\ la\ direction\ donn\u00E9\ en\ argument,\ si\ il\ n'y\ a\ pas\ de\ salle\ dans\ la\ direction\ donn\u00E9e\ en\ argument\ alors\ renvoi\ null\n\ @param\ pDirection\ Chaine\ de\ charact\u00E8re\ tap\u00E9\ par\ l'utilisateur\ qui\ va\ lui\ affecter\ une\ direction\n\ @return\ les\ diff\u00E9rentes\ direction\n
 comment5.params=
 comment5.target=java.lang.String\ getExitString()
-comment5.text=\n\ Donne\ la\ liste\ des\ sortis\ possibles\ pour\ cette\ pi\u00E8ce\n
+comment5.text=\n\ Donne\ la\ liste\ des\ sortis\ possibles\ pour\ cette\ pi\u00E8ce\n\ @return\ renvoi\ la\ liste\ des\ sortis\ possibles\n
 numComments=6

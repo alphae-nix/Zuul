@@ -1,4 +1,6 @@
-
+/**
+ * Cette classe permet de gérer le jeu
+ */
 public class Game { 
 
     private Room aCurrentRoom;
@@ -6,7 +8,7 @@ public class Game {
     /**
      * Va créer toutes les rooms nécessaires
      */
-    private void createRooms(){
+    private void createRooms(){ //Modifier pour l'exercice 7.8
         Room vHome= new Room ("You are home") ;
         Room vStreet1 = new Room ("You are in the First street") ;
         Room vFactory = new Room ("You are in the party of truth") ;
@@ -17,20 +19,31 @@ public class Game {
         Room vCafe = new Room ("You are in the Café du Chataigner");
         Room vStreet4 = new Room ("You are in the Fourth Street") ;
         Room vCinema = new Room ("You are in the Cinema");
-        Room vCave = new Room (" You are in a secret place") ;
+        Room vCellar = new Room (" You are in a secret place") ;
         // Déclaration des lieux de ma map (10)
 
-        vHome.setExits(vStreet1, vStreet3, null, null ) ;
-        vStreet1.setExits ( vFactory, null , vHome , null ) ;
-        vFactory.setExits ( null , vStreet2 , vStreet1 , null ) ;
-        vStreet2.setExits ( null , vPark , null , vFactory ) ;
-        vStreet3.setExits ( vPark , null , null , vHome) ;
-        vPark.setExits ( vBridge , vStreet4 , vStreet3 , vStreet2 ) ;
-        vBridge.setExits ( vCafe , null , vPark , null ) ;
-        vCafe.setExits ( null , null , vBridge , null ) ;
-        vStreet4.setExits ( null , null , vCinema , vPark ) ;
-        vCinema.setExits ( vStreet4 , null , null , null ) ;
-        vCave.setExits ( null , null , null , null ) ;
+        vHome.setExits("north",vStreet1);
+        vHome.setExits("east",vStreet3);
+        vStreet1.setExits ("north", vFactory);
+        vStreet1.setExits ("south", vHome);
+        vFactory.setExits ("east", vStreet2);
+        vFactory.setExits ("south", vStreet1);
+        vStreet2.setExits ("east", vPark);
+        vStreet2.setExits ("west", vFactory);
+        vStreet3.setExits ("north", vPark);
+        vStreet3.setExits ("west", vHome);
+        vPark.setExits ("north", vBridge);
+        vPark.setExits ("east", vStreet4);
+        vPark.setExits ("south", vStreet3);
+        vPark.setExits ("west", vStreet2);
+        vBridge.setExits ("north", vCafe);
+        vBridge.setExits ("south", vPark);
+        vCafe.setExits ("south", vBridge);
+        vCafe.setExits ("below", vCellar);
+        vStreet4.setExits ("south", vCinema);
+        vStreet4.setExits ("west", vPark);
+        vCinema.setExits ("north", vStreet4) ;
+        vCellar.setExits ("above", vCafe);
         // Déclaration du réseau des salles entrent elles
 
         this.aCurrentRoom = vHome ;
@@ -151,7 +164,7 @@ public class Game {
     }
 
     /**
-     * Va permettre d'afficher les informations relatives au lieu où on se trouve
+     * Va permettre d'afficher les informations relatives au lieu ou on se trouve
      */
     private void printLocationInfo(){
         System.out.println(aCurrentRoom.getDescription());

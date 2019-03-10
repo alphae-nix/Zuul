@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Game
+comment0.text=\n\ Cette\ classe\ permet\ de\ g\u00E9rer\ le\ jeu\n
 comment1.params=
 comment1.target=void\ createRooms()
 comment1.text=\n\ Va\ cr\u00E9er\ toutes\ les\ rooms\ n\u00E9cessaires\n
@@ -26,5 +27,5 @@ comment8.target=boolean\ processCommand(Command)
 comment8.text=\n\ Va\ lister\ des\ commandes\ qui\ seront\ valid\u00E9es\ lorsqu'on\ les\ \u00E9crits\ dans\ le\ jeu\n\ @param\ pCommand\ commande\ tap\u00E9\n\ @return\ la\ valeure\ de\ processCommand\n
 comment9.params=
 comment9.target=void\ printLocationInfo()
-comment9.text=\n\ Va\ permettre\ d'afficher\ les\ informations\ relatives\ au\ lieu\ o\u00F9\ on\ se\ trouve\n
+comment9.text=\n\ Va\ permettre\ d'afficher\ les\ informations\ relatives\ au\ lieu\ ou\ on\ se\ trouve\n
 numComments=10
