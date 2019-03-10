@@ -1,6 +1,6 @@
 
-public class Game
-{
+public class Game { 
+
     private Room aCurrentRoom;
     private Parser aParser;
     /**
@@ -50,7 +50,7 @@ public class Game
         System.out.println('\n');
         printLocationInfo();
     } //Affichage du message au début du jeu 
-    
+
     /**
      * Va nous permettre de lancer le jeu 
      */
@@ -64,7 +64,7 @@ public class Game
         System.out.println( "Thank you for playing. Good bye." );
 
     } //play() 
-    
+
     /**
      * Va permettre d'initialiser les attributs de la classe
      */
@@ -98,15 +98,15 @@ public class Game
             printLocationInfo();
         }
     } //fin goRoom
-    
+
     /**
      * Va afficher un message lorsqu'on tapera "help"
-    */
+     */
     private void printHelp(){
         System.out.println("You are lost. You are alone.\n" +
             " Your command words are:\n" + "   go quit help ") ;
     } // fin méthode printHelp
-    
+
     /**
      * Va initialiser la fonction Boolean qui se lance quand on marquera "quit"
      * @param pCommand est la commande tapé au clavier
@@ -122,7 +122,7 @@ public class Game
     } // fin méthode quit
 
     /**
-     * Va listé des commandes qui seront validées lorsqu'on les écrits dans le jeu
+     * Va lister des commandes qui seront validées lorsqu'on les écrits dans le jeu
      * @param pCommand commande tapé
      * @return la valeure de processCommand
      */
@@ -154,21 +154,10 @@ public class Game
      * Va permettre d'afficher les informations relatives au lieu où on se trouve
      */
     private void printLocationInfo(){
-        System.out.println("You are " + aCurrentRoom.getDescription());
-        System.out.print("The out :");
-        if(aCurrentRoom.getExit("north") != null){
-            System.out.print("north ") ;
-        }
-        if(aCurrentRoom.getExit("east") != null){
-            System.out.print("east ") ;
-        }
-        if(aCurrentRoom.getExit("south") != null){
-            System.out.print("south ") ;
-        }
-        if(aCurrentRoom.getExit("west") != null){
-            System.out.print("west ") ;
-        }
-        System.out.println();
+        System.out.println(aCurrentRoom.getDescription());
+        System.out.print("List of exits :");
+        System.out.println(aCurrentRoom.getExitString());
+
     }
 
 } // Game
