@@ -42,7 +42,7 @@ public class Room
     public Room getExit(final String pDirection){ //Modifier pour l'exercice 7.8
         return aExits.get(pDirection);
     }
-    
+
     /**
      * Donne la liste des sortis possibles pour cette pièce
      * @return renvoi la liste des sortis possibles
@@ -55,4 +55,18 @@ public class Room
         }
         return listOfExits;
     } //fin getExitString
+
+    /**
+     * Renvoie une description détaillée de cette pièce sous la forme:
+     *      Vous etes dans la cuisine.
+     *      Sorties: nord ouest
+     *@return Une description de la pièce, avec les sorties possibles
+     */
+    public String getLongDescription(){
+        return " You are " + this.aDescription + "\n" + "Exits: "+getExitString();
+    }
+
+
+    
+    
 } // Room

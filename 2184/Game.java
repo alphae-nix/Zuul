@@ -9,17 +9,17 @@ public class Game {
      * Va créer toutes les rooms nécessaires
      */
     private void createRooms(){ //Modifier pour l'exercice 7.8
-        Room vHome= new Room ("You are home") ;
-        Room vStreet1 = new Room ("You are in the First street") ;
-        Room vFactory = new Room ("You are in the party of truth") ;
-        Room vStreet2 = new Room ("You are in the Second Street") ;
-        Room vStreet3 = new Room ("You are in are in the Third Street") ;
-        Room vPark = new Room ("You are in Hyde Park") ;
-        Room vBridge = new Room ("You are in Tower Bridge");
-        Room vCafe = new Room ("You are in the Café du Chataigner");
-        Room vStreet4 = new Room ("You are in the Fourth Street") ;
-        Room vCinema = new Room ("You are in the Cinema");
-        Room vCellar = new Room (" You are in a secret place") ;
+        Room vHome= new Room ("at home") ;
+        Room vStreet1 = new Room ("in the First street") ;
+        Room vFactory = new Room ("in the party of truth") ;
+        Room vStreet2 = new Room ("in the Second Street") ;
+        Room vStreet3 = new Room ("in the Third Street") ;
+        Room vPark = new Room ("in Hyde Park") ;
+        Room vBridge = new Room ("in Tower Bridge");
+        Room vCafe = new Room ("in the Café du Chataigner");
+        Room vStreet4 = new Room ("in the Fourth Street") ;
+        Room vCinema = new Room ("in the Cinema");
+        Room vCellar = new Room ("in a secret place") ;
         // Déclaration des lieux de ma map (10)
 
         vHome.setExits("north",vStreet1);
@@ -55,7 +55,7 @@ public class Game {
      * Va afficher un message de bienvenu au début du jeu
      */
     private void printWelcome() {
-        System.out.println("Welcome to the World of Zuul! ") ;
+        System.out.println("Welcome to London in 2184! ") ;
         System.out.println("You must find a combination of numbers corresponding to the geographical coordinates of a rebel base that is fighting against the \"party\"");
         System.out.println("You will need to follow the instructions in your book to avoid being arrested.");
 
@@ -117,7 +117,8 @@ public class Game {
      */
     private void printHelp(){
         System.out.println("You are lost. You are alone.\n" +
-            " Your command words are:\n" + "   go quit help ") ;
+            " Your command words are:\n" );
+        System.out.println(aParser.showCommands());
     } // fin méthode printHelp
 
     /**
@@ -146,31 +147,50 @@ public class Game {
             return false ;
         }
 
-        if (vCommandWord.equals("quit")){
+        else if (vCommandWord.equals("quit")){
             return quit(pCommand) ;
         }
+        
+        else if (vCommandWord.equals("look")){
+            this.look();
+        }
 
-        if (vCommandWord.equals("go")){
+        else if (vCommandWord.equals("go")){
             goRoom(pCommand) ;
             return false ;
         }
 
-        if (vCommandWord.equals("help")){
+        else if (vCommandWord.equals("help")){
             printHelp() ;
             return false ;
         }
-
+        
+        else if (vCommandWord.equals("eat")){
+            this.eat();
+        }
+        
         return false ;
     }
-
+    
+    /**
+     * Va afficher ce message lorsqu'on execute la commande
+     */
+    private void eat(){
+        System.out.println("You have eaten now and you are not hungry any more");
+    }
+    
+    /**
+     * Va permettre d'afficher les informations relatives au lieu ou on se trouve
+     */
+    private void look(){ //modifier pour l'exo 7.14
+        System.out.println(aCurrentRoom.getLongDescription());
+    }
+    
     /**
      * Va permettre d'afficher les informations relatives au lieu ou on se trouve
      */
     private void printLocationInfo(){
-        System.out.println(aCurrentRoom.getDescription());
-        System.out.print("List of exits :");
-        System.out.println(aCurrentRoom.getExitString());
-
+        System.out.println(aCurrentRoom.getLongDescription());
     }
 
 } // Game

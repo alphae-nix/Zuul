@@ -13,7 +13,7 @@ public class CommandWords
 {
     // tableau constant qui contient tous les mots de commande valides
     private static final String[] sValidCommands = {
-        "go", "quit", "help"
+        "go", "quit", "help","look","eat"
     };
 
     /**
@@ -24,6 +24,17 @@ public class CommandWords
         // rien a faire pour le moment...
     } // CommandWords()
 
+    /**
+     * Affiche toutes les commandes valides sur System.out.
+     */
+    public String getCommandList(){ 
+        String vCommand = "";
+        for (String command : sValidCommands){
+            vCommand += command + ' ';
+        }
+        return vCommand ;
+    }
+    
     /**
      * Verifie si une String donnee fait partie des commandes valides. 
      * @param pString la String a tester

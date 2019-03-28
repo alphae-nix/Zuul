@@ -47,7 +47,7 @@ public class Command
         else hasSecondWord = true ;
         return hasSecondWord ;
     } // fin hasSecondWord()
-
+    
     /**
      * Va vérifier qu'une méthode à bien été tapé
      * @return si la commande est connue ou pas
