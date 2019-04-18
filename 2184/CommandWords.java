@@ -6,14 +6,14 @@
  * This class holds an enumeration table of all command words known to the game.
  * It is used to recognise commands as they are typed in.
  *
- * @author  Michael Kolling and David J. Barnes + D.Bureau
- * @version 2008.03.30 + 2013.09.15
+ * @author DELATTE Laurent
+ * @version 1.0
  */
 public class CommandWords
 {
     // tableau constant qui contient tous les mots de commande valides
     private static final String[] sValidCommands = {
-        "go", "quit", "help","look","eat"
+        "go", "quit", "help","look","eat","back","test"
     };
 
     /**
@@ -26,6 +26,7 @@ public class CommandWords
 
     /**
      * Affiche toutes les commandes valides sur System.out.
+     * @return liste des commandes
      */
     public String getCommandList(){ 
         String vCommand = "";

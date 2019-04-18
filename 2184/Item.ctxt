@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\n\ Classe\ Item\ permettant\ de\ r\u00E9pr\u00E9senter\ tous\ les\ objets\ du\ jeu\n\ @author\ DELATTE\ Laurent\n\ @version\ 1.0\n
+comment1.params=pNom\ pPoids\ pDescription
+comment1.target=Item(java.lang.String,\ int,\ java.lang.String)
+comment1.text=\n\ Initialise\ les\ attributs\ d'un\ item\n\ @param\ pNom\ nom\ de\ l'objet\n\ @param\ pPoids\ poids\ de\ l'objet\n\ @param\ pDescription\ description\ de\ l'objet\n
+comment2.params=
+comment2.target=java.lang.String\ getItemInformations()
+comment2.text=\n\ Retourne\ la\ description\ de\ l'objet\ et\ son\ poids\n\ @return\ description\ et\ le\ poids\ de\ l'objet\n
+comment3.params=
+comment3.target=int\ getaPrix()
+comment3.text=\n\ Retourn\ le\ prix\ de\ l'objet\n\ @return\ prix\ de\ l'objet\n
+comment4.params=
+comment4.target=java.lang.String\ getaNom()
+comment4.text=\n\ Retourne\ le\ nom\ de\ l'objet\n\ @return\ nom\ de\ l'objet\ \n
+comment5.params=
+comment5.target=int\ getaPoids()
+comment5.text=\n\ Retourne\ le\ poids\ de\ l'objet\n\ @return\ poids\ de\ l'objet\n
+comment6.params=
+comment6.target=java.lang.String\ getaDescription()
+comment6.text=\n\ Retourne\ la\ description\ de\ l'objet\n\ @return\ description\ de\ l'objet\n
+numComments=7

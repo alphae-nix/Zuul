@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Player
+comment0.text=\n\ Classe\ d\u00E9finissant\ le(s)\ joueur(s)\ du\ jeu\n\n\ @author\ DELATTE\ Laurent\n\ @version\ 1.0\n
+comment1.params=pNom\ pPoidMax
+comment1.target=Player(java.lang.String,\ int)
+comment1.text=\n\ Constructeur\ pour\ la\ classe\ Player\n\ @param\ pNom\ nom\ du\ player\n\ @param\ pPoidMax\ poids\ total\ du\ joueur\n
+comment2.params=
+comment2.target=Room\ getCurrentRoom()
+comment2.text=\n\ Retourne\ la\ piece\ actuelle\n\ @return\ piece\ actuelle\n
+comment3.params=pNouvelleRoom
+comment3.target=void\ setCurrentRoom(Room)
+comment3.text=\n\ Initialise\ la\ room\ dans\ laquelle\ se\ trouve\ le\ player\n\ @param\ pNouvelleRoom\ Nouvelle\ Room\n
+numComments=4
