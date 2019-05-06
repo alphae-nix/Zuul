@@ -8,7 +8,7 @@ public class Room
 {
     private String aDescription;
     private HashMap<String, Room> aExits;
-    private HashMap<String, Item> aItems;
+    public HashMap<String, Item> aItems;
     private String imageName;
     private Stack<Room> aRooms;
     // Attributs   
@@ -44,6 +44,14 @@ public class Room
     {
         aItems.put(pNom, pItem);
     }//Hashmap permettant d'associer chaques items à une room
+
+    /**
+     * Permet de supprimer un item de la hashmap aItems
+     * @param pNom Nom de l'item à supprimer de la hashmap
+     */
+    public Item removeItem (final String pNom) {
+        return aItems.remove(pNom);
+    }
 
     /**
      * Return the description of the room (the one that was defined in the

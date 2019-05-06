@@ -29,7 +29,7 @@ public class GameEngine
         this.aRoomStack = new Stack<Room>();
         createRooms();
     }
-    
+
     /**
      * Définit le GUI
      * @param pUserInterface pUserInterface
@@ -39,8 +39,7 @@ public class GameEngine
         aGui = pUserInterface;
         this.printWelcome();
     }
-    
-        
+
     /**
      * Va afficher un message de bienvenue au début du jeu pour le joueur
      */
@@ -74,7 +73,6 @@ public class GameEngine
         vCinema = new Room ("in the Cinema", "images/Cinema.jpg");
         vCellar = new Room ("in a secret place", "images/Cellar.jpg") ;
         // Déclaration des lieux de ma map (10)*/
-
 
         vHome.setExits("north",vStreet1);
         vHome.setExits("east",vStreet3);
@@ -115,7 +113,6 @@ public class GameEngine
         vPark.setItems("Key2", vKey2);
         vHome.setItems("Chest", vChest);
         vHome.setItems("Book", vBook);
-
 
     }
 
@@ -165,6 +162,20 @@ public class GameEngine
                 test(command.getSecondWord());
             }
             else aGui.println("no file select");
+        }
+        else if (commandWord.equals("take")){
+            if (!command.hasSecondWord() ){
+                aGui.println("take what");
+            } else if (!this.aPlayer.take(command.getSecondWord())){
+                aGui.println("you can't take this item");
+            }
+        }
+        else if (commandWord.equals("drop")){
+           if (!command.hasSecondWord() ){
+               aGui.println("drop what");
+           }else if (!this.aPlayer.drop(command.getSecondWord())){
+                aGui.println("you can't drop this item");
+            }
         }
     }
 
@@ -240,7 +251,7 @@ public class GameEngine
      * Va permettre d'afficher les informations relatives au lieu ou on se trouve
      */
     private void look(){ //modifier pour l'exo 7.14
-        aGui.println(this.aPlayer.getCurrentRoom().getLongDescription());
+        aGui.println(this.aPlayer.getCurrentRoom().getLongDescription() + "\n" + " You have in your inventory :" + aPlayer.getItemsNames());
     }
 
     /**
@@ -262,10 +273,10 @@ public class GameEngine
                 this.interpretCommand(vSc.nextLine());
             } //while qui test si il y a une ligne après 
         }//essai du code
-    
+
         catch ( final Exception pE){
             this.aGui.println("file error");
         }
     }//permet de lire un 
-    
+
 }
