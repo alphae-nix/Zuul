@@ -32,6 +32,7 @@ public class Item
     {
         return this.aDescription + " qui a un poids de " + this.aPoids;
     }//accesseur pour obtenir les informations relative
+
     
     /**
      * Retourn le prix de l'objet

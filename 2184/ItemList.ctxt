@@ -1,4 +1,26 @@
 #BlueJ class context
 comment0.target=ItemList
 comment0.text=\n\ Permet\ de\ g\u00E9rer\ une\ liste\ d'item\ \n\n\ @author\ Laurent\ Delatte\n\ @version\ 1.0\n
-numComments=1
+comment1.params=
+comment1.target=ItemList()
+comment2.params=
+comment2.target=java.util.HashMap\ getItemList()
+comment2.text=\n\ accesseur\ de\ la\ hashmap\n
+comment3.params=
+comment3.target=int\ getPoidActuel()
+comment4.params=pNom\ pItem
+comment4.target=void\ setInventaire(java.lang.String,\ Item)
+comment4.text=\n\ D\u00E9finit\ l'inventaire\ du\ player\n\ @param\ pItem\ Item\ a\ associer\ au\ nom\n\ @param\ pNom\ Nom\ de\ l'objet\ associ\u00E9\ \u00E0\ l'item\n
+comment5.params=pNom
+comment5.target=Item\ removeItemInventaire(java.lang.String)
+comment5.text=\n\ Permet\ de\ supprimer\ un\ item\ de\ la\ hashmap\ aInventaire\n\ @param\ pNom\ Nom\ de\ l'item\ \u00E0\ supprim\u00E9\ de\ la\ hashmap\n
+comment6.params=pPoidARetirer
+comment6.target=void\ rmPoid(int)
+comment6.text=\n\ Permet\ de\ supprimer\ un\ poid\ dans\ son\ inventaire\n
+comment7.params=pPoidAAjouter
+comment7.target=void\ addPoid(int)
+comment7.text=\n\ \n
+comment8.params=
+comment8.target=java.lang.String\ getItemsNames()
+comment8.text=\n\ Cette\ m\u00E9thode\ permet\ de\ connaitre\ tout\ les\ objets\ pr\u00E9sent\ dans\ l'inventaire\n\ @return\ vString\ Renvoi\ tout\ les\ Items\ pr\u00E9sent\ dans\ cette\ pi\u00E8ce\n
+numComments=9

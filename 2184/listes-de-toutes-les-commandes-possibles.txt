@@ -1,0 +1,12 @@
+go east
+go north
+go west
+go south
+take
+drop
+eat
+inventaire
+back
+help
+look
+quit

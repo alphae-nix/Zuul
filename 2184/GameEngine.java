@@ -17,7 +17,7 @@ public class GameEngine
     private Parser aParser;
     private Player aPlayer;
     private UserInterface aGui;
-    private Stack<Room> aRoomStack;
+
 
     /**
      * Constructeur pour la classe GameEngine
@@ -26,7 +26,6 @@ public class GameEngine
     {
         aPlayer = new Player("Watson", 100);
         aParser = new Parser();
-        this.aRoomStack = new Stack<Room>();
         createRooms();
     }
 
@@ -37,23 +36,9 @@ public class GameEngine
     public void setGUI(final UserInterface pUserInterface)
     {
         aGui = pUserInterface;
-        this.printWelcome();
+        this.aPlayer.setGUI(aGui);
+        aPlayer.printWelcome();
     }
-
-    /**
-     * Va afficher un message de bienvenue au début du jeu pour le joueur
-     */
-    private void printWelcome() {
-        aGui.print("\n");
-        aGui.println("Welcome to London in 2184! ");
-        aGui.println("You must find a combination of numbers corresponding to the geographical coordinates of a rebel base that is fighting against the \"party\"");
-        aGui.println("You will need to follow the instructions in your book to avoid being arrested.");
-        aGui.println("Type 'help' if you need help.");
-        aGui.print("\n");
-        aGui.println(aPlayer.getCurrentRoom().getLongDescription());
-        aGui.showImage(aPlayer.getCurrentRoom().getImageName());
-
-    } //Affichage du message au début du jeu 
 
     /**
      * Va créer toutes les rooms nécessaires
@@ -100,12 +85,14 @@ public class GameEngine
         aPlayer.setCurrentRoom(vHome);
         // Déclaration du lieu courant
 
-        Item vTorch, vKey1, vKey2, vChest, vBook;
-        vTorch = new Item("Torch", 10,"Thanks to this torch you can illuminate dark areas");
-        vKey1 = new Item ("Key1", 10, "Thanks to this Key you can cross Tower Bridge");
-        vKey2 = new Item ("Key2", 20, "Thanks to this key you can go in a secret place");
-        vChest = new Item ("Chest", 0,"Thanks to this chest you can clean up your stuff");
-        vBook = new Item ("Book", 5, "All informations you need are in this book");
+        Item vTorch, vKey1, vKey2, vChest, vBook, vCookie, vDécodeur;
+        vTorch = new Item("Torch", 50,"Thanks to this torch you can illuminate dark areas");
+        vKey1 = new Item ("Key1", 60, "Thanks to this Key you can cross Tower Bridge");
+        vKey2 = new Item ("Key2", 60, "Thanks to this key you can go in a secret place");
+        vChest = new Item ("Chest", 60,"Thanks to this chest you can clean up your stuff");
+        vBook = new Item ("Book", 50, "All informations you need are in this book");
+        vCookie = new Item ("Cookie", 40, "If you eat this cookie you can double your inventory size");
+        vDécodeur = new Item ("Decodeur", 100, "This decoder allows you to know the geographical coordinates of the location of the rebel base");
         // Déclaration de mes items
 
         vStreet3.setItems("Torch",vTorch);
@@ -113,7 +100,8 @@ public class GameEngine
         vPark.setItems("Key2", vKey2);
         vHome.setItems("Chest", vChest);
         vHome.setItems("Book", vBook);
-
+        vCinema.setItems("Cookie",vCookie);
+        vCellar.setItems("Decoder",vDécodeur);
     }
 
     /**
@@ -145,16 +133,19 @@ public class GameEngine
                 endGame();
         }
         else if (commandWord.equals("look")){
-            this.look();
+            aPlayer.look();
         }
         else if (commandWord.equals("eat")){
-            this.eat();
+            if( !command.hasSecondWord())
+                aGui.println("eat what?");
+            else 
+                aPlayer.eat(command);
         }
         else if (commandWord.equals("back")){
             if(command.hasSecondWord())
                 aGui.println("Back where?");
             else 
-                this.back();
+                aPlayer.back();
         }
         else if (commandWord.equals("test"))
         {
@@ -171,11 +162,14 @@ public class GameEngine
             }
         }
         else if (commandWord.equals("drop")){
-           if (!command.hasSecondWord() ){
-               aGui.println("drop what");
-           }else if (!this.aPlayer.drop(command.getSecondWord())){
+            if (!command.hasSecondWord() ){
+                aGui.println(" what");
+            }else if (!this.aPlayer.drop(command.getSecondWord())){
                 aGui.println("you can't drop this item");
             }
+        }
+        else if (commandWord.equals("inventaire")){
+            aPlayer.inventaire();
         }
     }
 
@@ -187,20 +181,6 @@ public class GameEngine
             " Your command words are:\n" );
         aGui.println(aParser.showCommands());
     } // fin méthode printHelp
-
-    /**
-     * Va nous permettre de revenir dans la salle précédente
-     */
-    public void back()
-    {
-        if (aRoomStack.empty()){
-            aGui.println("Any rooms visited yet");
-        }
-        else {aPlayer.setCurrentRoom(aRoomStack.pop());
-            aGui.println(aPlayer.getCurrentRoom().getLongDescription());
-            if(aPlayer.getCurrentRoom().getImageName() != null)
-                aGui.showImage(this.aPlayer.getCurrentRoom().getImageName());}
-    }
 
     /**
      * Procédure goHome exécuté quand on tape la commande "go" et qui permet de changer de pièce
@@ -217,7 +197,7 @@ public class GameEngine
 
         Room vNextRoom = this.aPlayer.getCurrentRoom().getExit(vDirection) ; // initialisation de NextRoom à null
 
-        aRoomStack.push(this.aPlayer.getCurrentRoom());
+        aPlayer.aRoomStack.push(this.aPlayer.getCurrentRoom());
         if (vNextRoom==null){
             aGui.println("There is no door !") ;
         }
@@ -238,20 +218,6 @@ public class GameEngine
         aGui.println("Thank you for playing.  Good bye.");
         aGui.enable(false);
 
-    }
-
-    /**
-     * Va afficher ce message lorsqu'on execute la commande
-     */
-    private void eat(){
-        aGui.println("You have eaten now and you are not hungry any more");
-    }
-
-    /**
-     * Va permettre d'afficher les informations relatives au lieu ou on se trouve
-     */
-    private void look(){ //modifier pour l'exo 7.14
-        aGui.println(this.aPlayer.getCurrentRoom().getLongDescription() + "\n" + " You have in your inventory :" + aPlayer.getItemsNames());
     }
 
     /**
